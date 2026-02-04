@@ -15,7 +15,7 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - NODE_OPTIONS=--dns-result-order=ipv4first
-      - AWS_REGION=ap-south-1
+      - AWS_REGION=us-east-1
       # 👇 Using correct Docker syntax to pull from .env
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
