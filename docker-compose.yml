@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 1. The Database
+  redis:
+    image: redis:alpine
+    # Ports removed for security. Only 'build-server' can access it now.
+
+  # 2. The Builder (Your Code)
+  build-server:
+    build: ./build-server
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - NODE_OPTIONS=--dns-result-order=ipv4first
+      - AWS_REGION=ap-south-1
+      # 👇 Using correct Docker syntax to pull from .env
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+    volumes:
+      - ./s3-reverse-proxy/dist:/s3-reverse-proxy/dist
+    depends_on:
+      - redis
