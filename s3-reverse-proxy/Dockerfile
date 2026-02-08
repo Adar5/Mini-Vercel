@@ -1,18 +1,20 @@
-# 1. Use Node.js v22 (Same as your build server)
-FROM node:22-alpine
+FROM node:18-alpine
 
-# 2. Create app directory
 WORKDIR /app
 
-# 3. Copy package files and install dependencies
 COPY package*.json ./
+
 RUN npm install
 
-# 4. Copy the rest of the code
+# Install typescript globally
+RUN npm install -g typescript
+
 COPY . .
 
-# 5. Open port 8000 (Crucial for the proxy to work)
+# 🔨 COMPILE STEP: TS -> CommonJS (.cjs)
+RUN npx tsc index.ts --target es2020 --module commonjs --esModuleInterop --skipLibCheck --outDir dist || true     && mv dist/index.js dist/index.cjs
+
 EXPOSE 8000
 
-# 6. Run the proxy
-CMD ["npx", "tsx", "index.ts"]
+# 🚀 RUN STEP
+CMD ["node", "dist/index.cjs"]

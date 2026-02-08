@@ -6,7 +6,8 @@ import { io, Socket } from "socket.io-client";
 
 // ------------------------------------------------------------------
 // 🔧 CONFIGURATION: PASTE YOUR NGROK API (PORT 9000) URL HERE
-const API_BASE_URL = "https://sagittal-cleistogamously-pilar.ngrok-free.dev"; 
+// const API_BASE_URL = "http://18.212.91.242:9000";
+const API_BASE_URL = "http://localhost:9000";
 // ------------------------------------------------------------------
 
 export default function Home() {

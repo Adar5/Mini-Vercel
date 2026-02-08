@@ -10,8 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.981.0",
-    "dotenv": "^17.2.3",
+    "@aws-sdk/client-s3": "^3.985.0",
+    "dotenv": "^17.2.4",
     "express": "^5.2.1",
     "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^3.0.5"
