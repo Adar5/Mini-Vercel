@@ -44,7 +44,7 @@ jobs:
       - name: Build and Push Reverse Proxy
         uses: docker/build-push-action@v5
         with:
-          context: ./reverse-proxy # 👈 Check if this folder name matches yours!
-          file: ./reverse-proxy/Dockerfile
+          context: ./s3-reverse-proxy # 👈 Check if this folder name matches yours!
+          file: ./s3-reverse-proxy/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/mini-vercel-proxy:latest
