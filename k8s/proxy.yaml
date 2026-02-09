@@ -15,7 +15,7 @@ spec:
       containers:
       - name: reverse-proxy
         image: mini-vercel-proxy:latest
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:

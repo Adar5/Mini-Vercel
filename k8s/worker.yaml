@@ -15,7 +15,7 @@ spec:
       containers:
       - name: build-server
         image: mini-vercel-build-server:latest
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         env:
         - name: REDIS_URL
           value: "redis://redis-service:6379"  # Ensure this matches your Service name
