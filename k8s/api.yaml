@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-server
-        image: adar5/mini-vercel-build-server:latest
+        image: adar5/mini-vercel-api-server:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 9000
