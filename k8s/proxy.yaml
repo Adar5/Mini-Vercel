@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: reverse-proxy
-        image: mini-vercel-proxy:latest
+        image: adar5/mini-vercel-build-server:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000

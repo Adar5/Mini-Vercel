@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: build-server
-        image: mini-vercel-build-server:latest
+        image: adar5/mini-vercel-build-server:latest
         imagePullPolicy: Always
         env:
         - name: REDIS_URL
