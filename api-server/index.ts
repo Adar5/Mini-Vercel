@@ -75,6 +75,9 @@ app.post('/project', async (req, res) => {
         } 
     });
 });
+app.get('/', (req, res) => {
+    res.json({ message: "My Mini-Vercel is LIVE on AWS!" })
+});
 
 server.listen(PORT, () => {
     console.log(`🚀 API Server + Socket.io running on Port ${PORT}`);
