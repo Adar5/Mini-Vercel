@@ -13,3 +13,7 @@ npm-debug.log
 # Build outputs (Optional, if you have them)
 dist/
 build/
+build-server/output/node_modules/
+build-server/output/
+dist/
+.next/
