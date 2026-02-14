@@ -71,7 +71,7 @@ export default function Home() {
       );
 
       const { projectSlug, url } = data.data;
-      setDeployUrl(url);
+      setDeployUrl(`http://${projectSlug}.gitlift.in`);
       setLogs((prev) => [...prev, `Job Queued! Project ID: ${projectSlug}`]);
 
       // Save the ID so we can re-subscribe if connection drops
