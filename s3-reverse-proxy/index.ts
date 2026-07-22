@@ -9,12 +9,12 @@ const PORT = 8000;
 const s3 = new S3Client({
     region: 'us-east-1',
     credentials: {
-       accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
-       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
+       accessKeyId: process.env.ORC_ACCESS_KEY_ID as string,
+       secretAccessKey: process.env.ORC_SECRET_ACCESS_KEY as string
     }
 });
 
-const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+const BUCKET_NAME = process.env.ORC_BUCKET_NAME;
 
 app.use(async (req, res) => {
     const hostname = req.hostname;
