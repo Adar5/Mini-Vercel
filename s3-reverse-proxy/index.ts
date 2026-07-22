@@ -7,7 +7,8 @@ const app = express();
 const PORT = 8000;
 
 const s3 = new S3Client({
-    region: 'us-east-1',
+    region: 'ap-mumbai-1',
+    endpoint: process.env.ORC_ENDPOINT as string,
     credentials: {
        accessKeyId: process.env.ORC_ACCESS_KEY_ID as string,
        secretAccessKey: process.env.ORC_SECRET_ACCESS_KEY as string
