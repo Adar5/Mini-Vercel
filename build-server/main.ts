@@ -19,12 +19,12 @@ redis.on("error", (err) => console.log("Redis Client Error", err));
 
 // Configure S3 Client for Oracle Cloud Compatibility
 const s3Client = new S3Client({
-  region: process.env.ORC_REGION || "us-east-1",
-  endpoint: process.env.ORC_ENDPOINT_URL!, 
+  region: process.env.AWS_REGION || "us-east-1",
+  endpoint: process.env.AWS_ENDPOINT_URL!, 
   forcePathStyle: true, 
   credentials: {
-    accessKeyId: process.env.ORC_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.ORC_SECRET_ACCESS_KEY || "",
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
   },
 });
 
@@ -75,7 +75,9 @@ async function main() {
 
       // 2. Install dependencies
       await publishLog(projectId, "📦 Installing dependencies...");
-      await execPromise(`npm install`, { cwd: outputDir });
+      await execPromise(`npm install --no-audit --no-fund --prefer-offline`, { 
+        cwd: outputDir 
+      });
 
       // 3. Build project
       await publishLog(projectId, "🔨 Building project...");
@@ -106,7 +108,7 @@ async function main() {
         const command = new PutObjectCommand({
           Bucket: bucketName,
           Key: `dist/${projectId}/${relativePath}`,
-          Body: fs.createReadStream(file),
+          Body: fs.readFileSync(file),
           ContentType: contentType,
         });
 

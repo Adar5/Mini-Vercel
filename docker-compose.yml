@@ -29,8 +29,11 @@ services:
       - AWS_BUCKET_NAME=${ORC_BUCKET_NAME}
       - AWS_REGION=${ORC_REGION}
       - AWS_ENDPOINT_URL=${ORC_ENDPOINT_URL} 
+      - NPM_CONFIG_CACHE=/npm-cache
     depends_on:
       - redis
+    volumes:
+      - build_cache:/npm-cache
 
   # 4. The Node.js S3 Proxy (Fetches sites from Oracle S3)
   s3-proxy:
@@ -54,3 +57,12 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - s3-proxy
+volumes:
+  build_cache:   
+
+  # 6. Frontend
+  frontend:
+    build: ./frontend  # Path to your Next.js folder containing its Dockerfile
+    restart: always
+    expose:
+      - "3000" # Standard Next.js port, exposed internally to Nginx  

@@ -63,11 +63,10 @@ app.use(async (req, res) => {
         }
 
     } catch (error) {
-        console.error(`❌ S3 Error for ${key}: File not found`);
-        res.status(404).send('File not found');
-    }
+    console.error(`❌ S3 Error for ${key}:`, error.name, error.message);
+}
 });
 
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
     console.log(`Reverse Proxy Running on port ${PORT}`);
 });
