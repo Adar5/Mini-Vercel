@@ -47,7 +47,9 @@ I built this platform to bypass these limitations by deploying applications into
 5. **Routing:** Once the build is successful, Nginx routes incoming traffic from the custom subdomain to the specific port of the newly deployed container.
 6. **Live Feedback:** Throughout the process, the worker emits logs via WebSockets back to the user's browser.
 
-   <img width="710" height="518" alt="Screenshot 2026-07-27 at 2 37 59 PM" src="https://github.com/user-attachments/assets/19479fde-9232-4eaa-95b9-f9d7a8cd65b8" />
+   <img width="1368" height="765" alt="Screenshot 2026-07-27 at 2 57 13 PM" src="https://github.com/user-attachments/assets/5cc220b0-a267-49d0-a5d9-28812cd2d028" />
+
+
 
 
 ## 🚀 Lessons Learned
